@@ -1,0 +1,2137 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>نظام إدارة الجودة | كلية الهندسة وتقنية المعلومات</title>
+
+
+    <style>
+
+        /* =====================================================
+           GENERAL
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Tahoma", "Arial", sans-serif;
+        }
+
+        :root {
+
+            --primary: #1765c1;
+            --primary-dark: #0d4f9e;
+            --primary-light: #e8f2ff;
+
+            --text: #111111;
+            --text-light: #666666;
+
+            --background: #f5f7f9;
+            --white: #ffffff;
+
+            --border: #dddddd;
+
+        }
+
+        body {
+
+            background: var(--background);
+
+            color: var(--text);
+
+            direction: rtl;
+
+        }
+
+
+        /* =====================================================
+           HEADER
+        ===================================================== */
+
+        header {
+
+            position: relative;
+
+            min-height: 105px;
+
+            background: white;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 18px 6%;
+
+            border-bottom: 1px solid #e5e5e5;
+
+            overflow: hidden;
+
+        }
+
+
+        /* Circuit Background */
+
+        header::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            opacity: 0.04;
+
+            background-image:
+
+                linear-gradient(
+                    90deg,
+                    var(--primary) 1px,
+                    transparent 1px
+                ),
+
+                linear-gradient(
+                    var(--primary) 1px,
+                    transparent 1px
+                );
+
+            background-size: 40px 40px;
+
+            pointer-events: none;
+
+        }
+
+
+        /* =====================================================
+           LOGOS
+        ===================================================== */
+
+        .logos {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 18px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .university-logo {
+
+            width: 72px;
+
+            height: 72px;
+
+            border-radius: 50%;
+
+            background: var(--primary-light);
+
+            border: 2px solid var(--primary);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            color: var(--primary);
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+        }
+
+
+        .college-name {
+
+            color: var(--primary);
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           HEADER TITLE
+        ===================================================== */
+
+        .header-title {
+
+            position: relative;
+
+            z-index: 2;
+
+            text-align: right;
+
+        }
+
+
+        .header-title h1 {
+
+            color: var(--primary);
+
+            font-size: 27px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .header-title p {
+
+            color: var(--text-light);
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           LANGUAGE BUTTON
+        ===================================================== */
+
+        .language-button {
+
+            position: absolute;
+
+            left: 30px;
+
+            top: 18px;
+
+            z-index: 5;
+
+            background: white;
+
+            color: var(--primary);
+
+            border: 1px solid var(--primary);
+
+            padding: 8px 16px;
+
+            border-radius: 20px;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+
+        }
+
+
+        .language-button:hover {
+
+            background: var(--primary);
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            position: relative;
+
+            background: white;
+
+            padding: 60px 7% 50px;
+
+            overflow: hidden;
+
+        }
+
+
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 450px;
+
+            height: 450px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            opacity: 0.04;
+
+            left: -180px;
+
+            top: -250px;
+
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            border-radius: 50%;
+
+            background: var(--primary);
+
+            opacity: 0.03;
+
+            right: -100px;
+
+            bottom: -150px;
+
+        }
+
+
+        .hero-content {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            text-align: right;
+
+        }
+
+
+        .hero h2 {
+
+            font-size: 42px;
+
+            color: #111;
+
+            margin-bottom: 18px;
+
+            line-height: 1.5;
+
+        }
+
+
+        .hero h2 span {
+
+            color: var(--primary);
+
+        }
+
+
+        .hero p {
+
+            color: var(--text-light);
+
+            font-size: 19px;
+
+            line-height: 2;
+
+            max-width: 850px;
+
+        }
+
+
+        /* =====================================================
+           MAIN SERVICE CARDS
+        ===================================================== */
+
+        .main-cards {
+
+            background: white;
+
+            padding: 25px 7% 55px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 28px;
+
+        }
+
+
+        .main-card {
+
+            position: relative;
+
+            min-height: 230px;
+
+            background: white;
+
+            border: 1px solid #dddddd;
+
+            border-radius: 20px;
+
+            padding: 30px;
+
+            box-shadow:
+
+                0 5px 20px rgba(0,0,0,0.05);
+
+            transition: all 0.3s ease;
+
+            overflow: hidden;
+
+        }
+
+
+        .main-card:hover {
+
+            transform: translateY(-8px);
+
+            border-color: var(--primary);
+
+            box-shadow:
+
+                0 15px 35px rgba(23,101,193,0.15);
+
+        }
+
+
+        /* Active Card */
+
+        .main-card.active {
+
+            background: var(--primary);
+
+            border-color: var(--primary);
+
+        }
+
+
+        .main-card.active h3,
+
+        .main-card.active p {
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           CARD ICON
+        ===================================================== */
+
+        .card-icon {
+
+            width: 60px;
+
+            height: 60px;
+
+            border-radius: 15px;
+
+            background: var(--primary-light);
+
+            color: var(--primary);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+
+        }
+
+
+        .main-card.active .card-icon {
+
+            background: rgba(255,255,255,0.15);
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           CARD TEXT
+        ===================================================== */
+
+        .main-card h3 {
+
+            font-size: 24px;
+
+            margin-bottom: 12px;
+
+            color: #111;
+
+        }
+
+
+        .main-card p {
+
+            color: var(--text-light);
+
+            line-height: 1.9;
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           CARD LINK
+        ===================================================== */
+
+        .card-link {
+
+            position: absolute;
+
+            bottom: 25px;
+
+            left: 30px;
+
+            text-decoration: none;
+
+            color: var(--primary);
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+        }
+
+
+        .main-card.active .card-link {
+
+            color: white;
+
+        }
+
+
+        .card-link:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =====================================================
+           PROGRAM SECTION
+        ===================================================== */
+
+        .program-section {
+
+            background: var(--background);
+
+            padding: 55px 5% 70px;
+
+        }
+
+
+        /* =====================================================
+           SECTION HEADER
+        ===================================================== */
+
+        .section-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .section-header h2 {
+
+            font-size: 31px;
+
+            color: #111;
+
+        }
+
+
+        .section-header h2::before {
+
+            content: "";
+
+            display: inline-block;
+
+            width: 6px;
+
+            height: 30px;
+
+            background: var(--primary);
+
+            margin-left: 12px;
+
+            vertical-align: middle;
+
+            border-radius: 5px;
+
+        }
+
+
+        /* =====================================================
+           SEARCH
+        ===================================================== */
+
+        .search-box {
+
+            width: 330px;
+
+            height: 50px;
+
+            border: 1px solid #d5d5d5;
+
+            background: white;
+
+            border-radius: 14px;
+
+            padding: 0 20px;
+
+            outline: none;
+
+            font-size: 15px;
+
+            transition: 0.3s;
+
+        }
+
+
+        .search-box:focus {
+
+            border-color: var(--primary);
+
+            box-shadow:
+
+                0 0 0 3px rgba(23,101,193,0.08);
+
+        }
+
+
+        /* =====================================================
+           PROGRAM GRID
+        ===================================================== */
+
+        .programs {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 28px;
+
+        }
+
+
+        /* =====================================================
+           PROGRAM CARD
+        ===================================================== */
+
+        .program-card {
+
+            position: relative;
+
+            height: 355px;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            background: #101010;
+
+            box-shadow:
+
+                0 8px 25px rgba(0,0,0,0.10);
+
+            transition: 0.35s;
+
+        }
+
+
+        .program-card:hover {
+
+            transform: translateY(-8px);
+
+            box-shadow:
+
+                0 18px 40px rgba(0,0,0,0.18);
+
+        }
+
+
+        /* =====================================================
+           PROGRAM IMAGE
+        ===================================================== */
+
+        .program-image {
+
+            position: absolute;
+
+            inset: 0;
+
+            background-size: cover;
+
+            background-position: center;
+
+            transition: transform 0.5s;
+
+        }
+
+
+        .program-card:hover .program-image {
+
+            transform: scale(1.08);
+
+        }
+
+
+        /* Images */
+
+        .cybersecurity {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.85)
+                ),
+
+                url("images/cybersecurity.jpg");
+
+        }
+
+
+        .computer {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.85)
+                ),
+
+                url("images/computer.jpg");
+
+        }
+
+
+        .electrical {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.85)
+                ),
+
+                url("images/electrical.jpg");
+
+        }
+
+
+        .architecture {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.85)
+                ),
+
+                url("images/architecture.jpg");
+
+        }
+
+
+        .fire {
+
+            background-image:
+
+                linear-gradient(
+                    rgba(0,0,0,0.15),
+                    rgba(0,0,0,0.85)
+                ),
+
+                url("images/fire.jpg");
+
+        }
+
+
+        /* =====================================================
+           PROGRAM CONTENT
+        ===================================================== */
+
+        .program-content {
+
+            position: absolute;
+
+            inset: 0;
+
+            padding: 22px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            z-index: 2;
+
+        }
+
+
+        /* =====================================================
+           PROGRAM LABEL
+        ===================================================== */
+
+        .program-label {
+
+            align-self: flex-start;
+
+            background: #e8f2ff;
+
+            color: var(--primary);
+
+            padding: 10px 18px;
+
+            border-radius: 12px;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =====================================================
+           PROGRAM INFO
+        ===================================================== */
+
+        .program-info {
+
+            color: white;
+
+        }
+
+
+        .program-info h3 {
+
+            font-size: 22px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .program-info p {
+
+            color: #dddddd;
+
+            font-size: 14px;
+
+            margin-bottom: 17px;
+
+        }
+
+
+        /* =====================================================
+           PROGRAM BUTTON
+        ===================================================== */
+
+        .program-btn {
+
+            display: inline-block;
+
+            background: white;
+
+            color: var(--primary);
+
+            padding: 13px 23px;
+
+            border-radius: 12px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+
+        }
+
+
+        .program-btn:hover {
+
+            background: var(--primary);
+
+            color: white;
+
+        }
+
+
+        /* =====================================================
+           QUALITY SECTION
+        ===================================================== */
+
+        .quality-section {
+
+            background: white;
+
+            padding: 60px 7%;
+
+        }
+
+
+        .quality-title {
+
+            text-align: center;
+
+            margin-bottom: 40px;
+
+        }
+
+
+        .quality-title h2 {
+
+            font-size: 31px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .quality-title p {
+
+            color: var(--text-light);
+
+        }
+
+
+        /* =====================================================
+           STATISTICS
+        ===================================================== */
+
+        .stats-container {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 22px;
+
+        }
+
+
+        .stat {
+
+            text-align: center;
+
+            background: var(--background);
+
+            border-radius: 18px;
+
+            padding: 30px 15px;
+
+            border: 1px solid #eeeeee;
+
+            transition: 0.3s;
+
+        }
+
+
+        .stat:hover {
+
+            transform: translateY(-5px);
+
+            border-color: var(--primary);
+
+        }
+
+
+        .stat h3 {
+
+            color: var(--primary);
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .stat p {
+
+            color: var(--text-light);
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           QUALITY FEATURES
+        ===================================================== */
+
+        .features {
+
+            margin-top: 45px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .feature {
+
+            padding: 25px;
+
+            border-radius: 16px;
+
+            background: white;
+
+            border: 1px solid #e5e5e5;
+
+            transition: 0.3s;
+
+        }
+
+
+        .feature:hover {
+
+            border-color: var(--primary);
+
+            box-shadow:
+
+                0 10px 25px rgba(0,0,0,0.07);
+
+        }
+
+
+        .feature h3 {
+
+            color: var(--primary);
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .feature p {
+
+            color: var(--text-light);
+
+            line-height: 1.8;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ===================================================== */
+
+        footer {
+
+            background: var(--primary-dark);
+
+            color: white;
+
+            padding: 35px 7%;
+
+        }
+
+
+        .footer-container {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 30px;
+
+        }
+
+
+        .footer-title {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .footer-text {
+
+            color: #d8e5f5;
+
+            font-size: 14px;
+
+            line-height: 1.8;
+
+        }
+
+
+        .footer-links {
+
+            display: flex;
+
+            gap: 20px;
+
+        }
+
+
+        .footer-links a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+        }
+
+
+        .footer-links a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - TABLET
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .programs {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .main-cards {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+
+            .stats-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE - MOBILE
+        ===================================================== */
+
+        @media (max-width: 700px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                text-align: center;
+
+                padding-top: 25px;
+
+            }
+
+
+            .header-title {
+
+                text-align: center;
+
+            }
+
+
+            .logos {
+
+                flex-direction: column;
+
+            }
+
+
+            .language-button {
+
+                position: static;
+
+                margin-bottom: 10px;
+
+            }
+
+
+            .hero {
+
+                padding: 45px 7%;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 30px;
+
+            }
+
+
+            .hero p {
+
+                font-size: 16px;
+
+            }
+
+
+            .main-cards {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .section-header {
+
+                flex-direction: column;
+
+                align-items: stretch;
+
+                gap: 20px;
+
+            }
+
+
+            .search-box {
+
+                width: 100%;
+
+            }
+
+
+            .programs {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .stats-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .features {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .footer-container {
+
+                flex-direction: column;
+
+                text-align: center;
+
+            }
+
+
+            .footer-links {
+
+                flex-direction: column;
+
+                gap: 10px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+
+    <button class="language-button"
+            onclick="changeLanguage()">
+
+        English
+
+    </button>
+
+
+    <div class="logos">
+
+        <div class="university-logo">
+
+            شعار<br>
+            الجامعة
+
+        </div>
+
+
+        <div class="college-name">
+
+            كلية الهندسة وتقنية المعلومات
+
+        </div>
+
+    </div>
+
+
+    <div class="header-title">
+
+        <h1>
+            نظام إدارة الجودة
+        </h1>
+
+        <p>
+            Quality Management System
+        </p>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+        <h2>
+
+            أهلاً بكم في
+
+            <span>
+                نظام إدارة الجودة
+            </span>
+
+        </h2>
+
+
+        <p>
+
+            المنصة الإلكترونية لإدارة ومتابعة أعمال الجودة
+            والاعتماد الأكاديمي والبرامج التعليمية
+            بكلية الهندسة وتقنية المعلومات.
+
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     MAIN SERVICES
+========================================================= -->
+
+<section class="main-cards">
+
+
+    <!-- Quality Management -->
+
+    <div class="main-card active">
+
+
+        <div class="card-icon">
+            ✓
+        </div>
+
+
+        <h3>
+            إدارة الجودة
+        </h3>
+
+
+        <p>
+
+            متابعة مؤشرات الأداء والتقارير
+            وخطط التحسين وأعمال لجان الجودة
+            بالكلية.
+
+        </p>
+
+
+        <a href="quality.html"
+           class="card-link">
+
+            دخول ←
+
+        </a>
+
+    </div>
+
+
+
+    <!-- Academic Programs -->
+
+    <div class="main-card">
+
+
+        <div class="card-icon">
+            ◈
+        </div>
+
+
+        <h3>
+            البرامج الأكاديمية
+        </h3>
+
+
+        <p>
+
+            استعراض البرامج الأكاديمية
+            وتوصيف البرامج والخطط الدراسية
+            وملفات الجودة.
+
+        </p>
+
+
+        <a href="#programs"
+           class="card-link">
+
+            دخول ←
+
+        </a>
+
+    </div>
+
+
+
+    <!-- Accreditation -->
+
+    <div class="main-card">
+
+
+        <div class="card-icon">
+            ★
+        </div>
+
+
+        <h3>
+            الاعتماد الأكاديمي
+        </h3>
+
+
+        <p>
+
+            إدارة معايير الاعتماد الأكاديمي
+            والأدلة والشواهد والتقارير.
+
+        </p>
+
+
+        <a href="accreditation.html"
+           class="card-link">
+
+            دخول ←
+
+        </a>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     ACADEMIC PROGRAMS
+========================================================= -->
+
+<section class="program-section"
+         id="programs">
+
+
+    <div class="section-header">
+
+
+        <h2>
+            البرامج الأكاديمية
+        </h2>
+
+
+        <input
+            type="text"
+            id="search"
+            class="search-box"
+            placeholder="بحث عن برنامج..."
+            onkeyup="searchPrograms()"
+        >
+
+
+    </div>
+
+
+
+    <div class="programs"
+         id="programList">
+
+
+
+        <!-- =================================================
+             CYBERSECURITY
+        ================================================== -->
+
+        <div class="program-card">
+
+
+            <div class="program-image cybersecurity">
+            </div>
+
+
+            <div class="program-content">
+
+
+                <span class="program-label">
+
+                    الأمن السيبراني
+
+                </span>
+
+
+                <div class="program-info">
+
+
+                    <h3>
+
+                        برنامج الأمن السيبراني
+
+                    </h3>
+
+
+                    <p>
+
+                        ملفات الجودة والاعتماد الأكاديمي
+
+                    </p>
+
+
+                    <a
+                        href="programs/cybersecurity.html"
+                        class="program-btn">
+
+                        الدخول للبرنامج
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             COMPUTER ENGINEERING
+        ================================================== -->
+
+        <div class="program-card">
+
+
+            <div class="program-image computer">
+            </div>
+
+
+            <div class="program-content">
+
+
+                <span class="program-label">
+
+                    هندسة الحاسب
+
+                </span>
+
+
+                <div class="program-info">
+
+
+                    <h3>
+
+                        برنامج هندسة الحاسب
+
+                    </h3>
+
+
+                    <p>
+
+                        ملفات الجودة والاعتماد الأكاديمي
+
+                    </p>
+
+
+                    <a
+                        href="programs/computer.html"
+                        class="program-btn">
+
+                        الدخول للبرنامج
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             ELECTRICAL ENGINEERING
+        ================================================== -->
+
+        <div class="program-card">
+
+
+            <div class="program-image electrical">
+            </div>
+
+
+            <div class="program-content">
+
+
+                <span class="program-label">
+
+                    الهندسة الكهربائية
+
+                </span>
+
+
+                <div class="program-info">
+
+
+                    <h3>
+
+                        برنامج الهندسة الكهربائية
+
+                    </h3>
+
+
+                    <p>
+
+                        ملفات الجودة والاعتماد الأكاديمي
+
+                    </p>
+
+
+                    <a
+                        href="programs/electrical.html"
+                        class="program-btn">
+
+                        الدخول للبرنامج
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             ARCHITECTURE
+        ================================================== -->
+
+        <div class="program-card">
+
+
+            <div class="program-image architecture">
+            </div>
+
+
+            <div class="program-content">
+
+
+                <span class="program-label">
+
+                    الهندسة المعمارية
+
+                </span>
+
+
+                <div class="program-info">
+
+
+                    <h3>
+
+                        برنامج الهندسة المعمارية
+
+                    </h3>
+
+
+                    <p>
+
+                        ملفات الجودة والاعتماد الأكاديمي
+
+                    </p>
+
+
+                    <a
+                        href="programs/architecture.html"
+                        class="program-btn">
+
+                        الدخول للبرنامج
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             FIRE ENGINEERING
+        ================================================== -->
+
+        <div class="program-card">
+
+
+            <div class="program-image fire">
+            </div>
+
+
+            <div class="program-content">
+
+
+                <span class="program-label">
+
+                    هندسة الحريق
+
+                </span>
+
+
+                <div class="program-info">
+
+
+                    <h3>
+
+                        برنامج هندسة الحريق
+
+                    </h3>
+
+
+                    <p>
+
+                        ملفات الجودة والاعتماد الأكاديمي
+
+                    </p>
+
+
+                    <a
+                        href="programs/fire.html"
+                        class="program-btn">
+
+                        الدخول للبرنامج
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     QUALITY STATISTICS
+========================================================= -->
+
+<section class="quality-section">
+
+
+    <div class="quality-title">
+
+
+        <h2>
+            مؤشرات نظام الجودة
+        </h2>
+
+
+        <p>
+
+            متابعة مؤشرات الأداء والجودة
+            للبرامج الأكاديمية بالكلية
+
+        </p>
+
+
+    </div>
+
+
+
+    <div class="stats-container">
+
+
+        <div class="stat">
+
+            <h3>
+                12
+            </h3>
+
+            <p>
+                البرامج الأكاديمية
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>
+                85%
+            </h3>
+
+            <p>
+                نسبة تحقيق مؤشرات الجودة
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>
+                45
+            </h3>
+
+            <p>
+                ملفات الجودة
+            </p>
+
+        </div>
+
+
+        <div class="stat">
+
+            <h3>
+                8
+            </h3>
+
+            <p>
+                لجان الجودة
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         QUALITY FEATURES
+    ====================================================== -->
+
+    <div class="features">
+
+
+        <div class="feature">
+
+            <h3>
+                📊 مؤشرات الأداء
+            </h3>
+
+            <p>
+
+                متابعة مؤشرات الأداء الرئيسية
+                وتحليل مستوى تحقيق أهداف البرامج
+                الأكاديمية.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>
+                📋 التقارير
+            </h3>
+
+            <p>
+
+                الوصول إلى التقارير السنوية
+                وتقارير الجودة والتقييم
+                وخطط التحسين.
+
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <h3>
+                📁 الأدلة والشواهد
+            </h3>
+
+            <p>
+
+                تنظيم وحفظ الأدلة والشواهد
+                الخاصة بمعايير الجودة
+                والاعتماد الأكاديمي.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer>
+
+
+    <div class="footer-container">
+
+
+        <div>
+
+
+            <div class="footer-title">
+
+                نظام إدارة الجودة
+
+            </div>
+
+
+            <div class="footer-text">
+
+                كلية الهندسة وتقنية المعلومات
+
+                <br>
+
+                منصة إلكترونية لإدارة الجودة
+                والاعتماد الأكاديمي.
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="footer-links">
+
+
+            <a href="index.html">
+                الرئيسية
+            </a>
+
+
+            <a href="quality.html">
+                إدارة الجودة
+            </a>
+
+
+            <a href="accreditation.html">
+                الاعتماد الأكاديمي
+            </a>
+
+
+            <a href="contact.html">
+                اتصل بنا
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+    <br>
+
+
+    <div style="text-align:center;">
+
+        جميع الحقوق محفوظة © 2026
+        <br>
+        نظام إدارة الجودة
+
+    </div>
+
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+/* =========================================================
+   PROGRAM SEARCH
+========================================================= */
+
+function searchPrograms() {
+
+
+    let input =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+
+    let cards =
+        document
+        .getElementById("programList")
+        .getElementsByClassName("program-card");
+
+
+    for (
+        let i = 0;
+        i < cards.length;
+        i++
+    ) {
+
+
+        let text =
+            cards[i]
+            .innerText
+            .toLowerCase();
+
+
+        if (
+            text.includes(input)
+        ) {
+
+            cards[i].style.display =
+                "block";
+
+        }
+
+        else {
+
+            cards[i].style.display =
+                "none";
+
+        }
+
+    }
+
+}
+
+
+
+/* =========================================================
+   LANGUAGE BUTTON
+========================================================= */
+
+function changeLanguage() {
+
+    alert(
+        "English version will be available soon."
+    );
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
